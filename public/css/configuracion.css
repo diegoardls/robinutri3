@@ -1,0 +1,401 @@
+/* ======================================================= */
+/* --- 5. ESTILOS DE REGISTRO DE PERFILES --- */
+/* (AGREGA ESTA SECCIÓN COMPLETA AL FINAL DE styles.css) */
+/* ======================================================= */
+
+/* --- Estilos Base y Layout Fijo --- */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light-cream); /* <-- Aquí se usa la variable */
+    min-height: 100vh;
+    /* ... */
+}
+/* --- 1. VARIABLES DE COLOR Y AJUSTES GLOBALES --- */
+:root {
+    /* Colores */
+    --bg-light-cream: #E6E3F9; /* ⭐ NUEVO COLOR DE FONDO ⭐ */
+    /* ... */
+}
+
+.registro-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.logo-img-config {
+    width: 300px; 
+    height: auto;
+    margin-bottom: 5px;
+}
+.slogan {
+    font-size: 0.9em;
+    color: #A390D3; 
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0;
+}
+.registro-header h1 {
+    font-size: 2em;
+    color: var(--text-dark);
+    margin-bottom: 0;
+}
+
+.registro-perfil-area {
+    /* Mantenemos el Flexbox para las dos columnas (formulario y lista) */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea las columnas arriba */
+    gap: 50px;
+    width: 100%;
+    max-width: 950px; 
+    
+    /* ⭐ CLAVE PARA CENTRADO HORIZONTAL ⭐ */
+    margin: 0 auto; 
+}
+
+.registro-inputs {
+    flex-basis: 400px;
+    flex-shrink: 0;
+    
+    /* ⭐ PROPIEDADES A AGREGAR / MODIFICAR ⭐ */
+    background-color: white; /* Fondo blanco */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 25px; /* Espacio interior para que no se peguen los inputs */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para que flote */
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.input-label {
+    display: block;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+/* ⭐ ESTILOS CLAVE PARA LOS NUEVOS INPUTS FUNCIONALES ⭐ */
+.form-input {
+    background-color: #e0f2ff; /* Color azul claro del diseño */
+    border: 1px solid #c2e2ff;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box; /* CLAVE: El padding no aumenta el tamaño total */
+    font-size: 1em;
+    color: #555;
+    width: 100%; 
+    resize: none; /* Evita que el usuario cambie el tamaño del textarea */
+    
+    /* Para prevenir que el texto se salga */
+    word-wrap: break-word; 
+    overflow-x: hidden;
+}
+
+/* El grupo de edad necesita un layout flexible para el label y el input */
+.input-group-edad {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-grow: 0;
+}
+
+.input-group-edad label {
+    font-weight: bold;
+    color: var(--text-dark);
+    /* Ajuste para alinear visualmente */
+    margin-top: 0; 
+}
+
+.small-input {
+    flex-grow: 1;
+    flex-basis: 0; 
+}
+
+.tiny-input {
+    width: 60px; /* Ancho específico para la edad */
+    flex-grow: 0;
+    text-align: center;
+}
+
+.large-input {
+    height: 70px; 
+    margin-bottom: 20px;
+    line-height: 1.2; 
+    overflow-y: auto; /* Permite el scroll vertical si se escribe mucho en el área de texto */
+}
+/* FIN DE ESTILOS CLAVE */
+
+
+.perfiles-creados-lista {
+    flex-basis: 450px;
+    flex-shrink: 0;
+
+    /* ⭐ PROPIEDADES A AGREGAR / MODIFICAR ⭐ */
+    background-color: white; /* Fondo blanco */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 25px; /* Espacio interior */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.profile-display-item {
+    background-color: white;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dark);
+    font-size: 1.1em;
+}
+
+.profile-display-item i {
+    color: #A390D3; 
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.green-btn {
+    background-color: #6ed06e; 
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%; 
+}
+.edit-mode-btn {
+    /* Define un color de fondo diferente para el modo edición */
+    background-color: var(--main-purple, blue); /* Un morado o azul intenso */
+    color: white; /* Texto blanco para que resalte */
+    border: 2px solid var(--main-purple, blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Una sombra más fuerte */
+}
+
+/* Opcional: Estilo al pasar el ratón (hover) */
+.edit-mode-btn:hover {
+    background-color: #5d4aa0; /* Un morado un poco más oscuro */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.red-btn {
+    background-color: #e74c3c; 
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%; 
+    margin-top: 20px;
+}
+
+.registro-inputs .create-profile-btn {
+    width: auto;
+    margin-top: 40px;
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.perfiles-creados-lista .delete-profile-btn {
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* --- ESTILO PARA EL BOTÓN 'CONTINUAR' --- */
+.continue-btn {
+    width: 280px; /* Un poco más ancho para que se vea mejor */
+    padding: 18px 30px; /* Más padding vertical */
+    font-size: 1.2em; /* Texto un poco más grande */
+    
+    display: block; 
+    
+    /* ⭐ CLAVE: Centrar horizontalmente usando 'auto' ⭐ */
+    margin: 60px auto 40px auto; 
+    
+    /* Mejoras visuales (ya incluidas en .green-btn, pero reforzamos) */
+    border-radius: 50px; 
+    text-align: center; /* Asegura que el texto dentro del <a> esté centrado */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.footer-text-registro {
+    text-align: center;
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 950px) {
+    .registro-perfil-area {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    .input-row {
+        flex-direction: column;
+    }
+}
+
+/* --- ESTILO PARA AGRUPAR ALERGIAS Y ENFERMEDADES EN LA MISMA LÍNEA --- */
+.form-row-group {
+    display: flex;
+    gap: 20px; /* Espacio entre los dos campos */
+    margin-bottom: 20px; /* Espacio debajo de la fila */
+}
+
+/* Estilo para que cada campo (Alergias y Enfermedades) se expanda de igual manera */
+.form-row-group .input-group-vertical {
+    flex: 1; /* Permite que ambos tomen el mismo ancho */
+    display: flex;
+    flex-direction: column; /* Para que la etiqueta y el textarea estén uno encima del otro */
+}
+
+/* Asegurar el espaciado interno consistente */
+.input-group-vertical .input-label {
+    margin-bottom: 5px; /* Espacio debajo del título (Alergias:, Enfermedades:) */
+}
+
+/* ======================================= */
+/* === MEJORAS DE ESTILO PARA LA LISTA DINÁMICA === */
+/* ======================================= */
+
+/* Refinamiento del Item Principal (Ya tienes un flexbox, solo refinamos) */
+.profile-display-item {
+    background-color: #f7f3ff; /* Un fondo más claro que el blanco */
+    border: 1px solid #e0c8ff;
+    padding: 12px 20px; /* Más cómodo */
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08); /* Sombra mejorada */
+}
+
+/* Contenedor de Información (Nombre + Edad) */
+.profile-info {
+    flex-grow: 1; /* Permite que la información ocupe el espacio restante */
+}
+
+/* Estilo para el Nombre (negrita y color principal) */
+.profile-name strong {
+    color: black; /* Color oscuro que contrasta con el morado */
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Estilo para la Edad (detalle, más suave) */
+.profile-details {
+    color: #8c8c8c; /* Gris suave para el detalle */
+    margin-left: 8px;
+    font-size: 0.95em;
+    font-weight: normal;
+}
+
+/* Contenedor de Iconos (Acciones) */
+.profile-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre los iconos */
+}
+
+/* Colores específicos para los Iconos (actualmente todos son #A390D3) */
+.profile-actions i {
+    font-size: 1.25em;
+    transition: color 0.2s;
+}
+
+.edit-profile-icon {
+    color: #6c5ce7; /* Morado claro para editar */
+}
+
+.delete-profile-icon {
+    color: #ff6b6b; /* Rojo suave para eliminar */
+}
+
+/* Efectos hover para interacción */
+.edit-profile-icon:hover {
+    color: #4a34b3;
+}
+.delete-profile-icon:hover {
+    color: #cc4c4c;
+}
+
+/* ======================================================= */
+/* --- 7. ESTILOS PARA MENSAJES DE ESTADO (FEEDBACK) --- */
+/* ======================================================= */
+
+.status-message {
+    /* Fondo y Bordes */
+    padding: 15px 25px; /* Más padding para que respire */
+    margin: 15px auto;
+    width: 90%; /* Ocupa casi todo el ancho */
+    max-width: 500px; /* Limita el ancho en pantallas grandes */
+    border-radius: 12px; /* Bordes más suaves */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra elegante */
+    
+    /* Tipografía y Layout */
+    font-weight: 600; /* Semi-negrita */
+    font-size: 1.1em;
+    text-align: center;
+    
+    /* Animación de Aparición y Desaparición */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    opacity: 1; 
+    transform: translateY(0);
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+/* --- COLORES PARA CREAR/EDITAR (Éxito) --- */
+.status-success {
+    /* Un verde más vibrante, usa el color principal si es posible */
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 2px solid #c3e6cb;
+}
+
+/* --- COLORES PARA BORRAR (Advertencia) --- */
+.status-warning {
+    /* Un rojo suave y amigable */
+    background-color: #ffe0e0; 
+    color: #8c0000; 
+    border: 2px solid #f9c2c2;
+}
+
+/* --- COLORES PARA ERRORES de servidor/validación --- */
+.status-error {
+    /* Un color azul/morado, para diferenciarlo de la advertencia */
+    background-color: #f0e6ff; /* Morado muy claro */
+    color: #5d3f9e; /* Morado oscuro */
+    border: 2px solid #c8b7e8;
+}
+
+/* Si quieres que se muevan un poco al aparecer (opcional) */
+.perfiles-creados-lista .status-message:first-child {
+    animation: fade-in-down 0.5s ease-out;
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
